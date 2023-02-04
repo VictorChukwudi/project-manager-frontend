@@ -1,41 +1,85 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  box-sizing: border-box;
+  background-color: rgb(224, 224, 224);
+}
+.app {
+  /* background-color: ; */
+}
+.header > p {
+  /* font-family: 'Itim', cursive; */
+  font-family: "Roboto Slab", serif;
+}
+.header--search {
+  width: 200px;
+  border-radius: 30px;
+}
+.header--search > input {
+  border-radius: 30px;
+  width: 50vw;
+  height: 40px;
+  border: 0;
+  padding-left: 30px;
+  background-color: darkgray;
+  color: white;
+}
+::-webkit-input-placeholder {
+  font-size: 20px;
+  font-style: italic;
+  color: white;
+  font-weight: 500;
+}
+:-moz-placeholder {
+  font-size: 16px;
+  font-style: italic;
+  color: white;
+  font-weight: 500;
+}
+::-moz-placeholder {
+  font-size: 16px;
+  font-style: italic;
+  color: white;
+  font-weight: 500;
+}
+:-ms-input-placeholder {
+  font-size: 16px;
+  font-style: italic;
+  color: white;
+  font-weight: 500;
+}
+.sidebar {
+  background-color: rgb(136, 136, 136);
+  opacity: 0.5;
+  width: 20vw;
+  height: 100vh;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.sidebar > ul > li {
+  margin-top: 15px;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.sidebar > ul > li > a {
+  color: white;
+  font-family: "Itim", cursive;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+.cardbody {
+  background-color: rgb(136, 136, 136, 0.25);
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.cardbody--status {
+  text-transform: capitalize;
+  margin: 0 5px;
+  border-radius: 20px;
+  height: 30vh;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.cardbody--status > h6 {
+  font-family: "Itim", cursive;
+  margin-left: 12px;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  height: 15vw;
+  width: 15vw;
+  background-color: rgb(136, 136, 136, 0.75);
+  margin: 15px 10px;
 }
