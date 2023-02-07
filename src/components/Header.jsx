@@ -6,8 +6,8 @@ const Header = () => {
       <p className="h3 col-md-3 ms-5">Project-M Tool</p>
 
       <span className="header--search col-md-9">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" placeholder="search" className="w-5 " />
+        {/* <i class="fa-solid fa-magnifying-glass"></i> */}
+        <input type="text" placeholder=" search" className="w-5 " />
       </span>
     </div>
   );

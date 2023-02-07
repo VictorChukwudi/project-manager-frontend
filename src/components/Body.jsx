@@ -7,27 +7,22 @@ const Body = (props) => {
       <div className="m-1 p-2 sidebar mb-3 col-md-4">
         <ul className="nav flex-column ms-4">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">
+            <a className="" href="#">
               dashboard
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="" href="#">
               recent
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="" href="#">
               projects
             </a>
           </li>
           <li className="nav-item">
-            <a
-              className="nav-link "
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-            >
+            <a className="" href="#">
               categories
             </a>
           </li>
