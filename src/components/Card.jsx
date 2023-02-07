@@ -7,7 +7,7 @@ const Card = () => {
       <p className="card--desc mt-0 ms-4 mb-1">
         Suspendisse ante odio, aliquet a risus non, suscipit consectetur nisl.
       </p>
-      <span className="card--tags d-flex justify-content-start ms-4 mt-0">
+      <span className="card--tags d-flex justify-content-start ms-4 mt-3">
         <p className="tag-name">tags:</p>
         <p>consectetur</p>
         <p>augue</p>
@@ -15,6 +15,7 @@ const Card = () => {
         <p>Mauris</p>
       </span>
       <span className="card--span">
+        {/* <FontAwesomeIcon icon="fa-solid fa-arrow-right" /> */}
         <i class="fa-lg fa-solid fa-arrow-right arrow"></i>
       </span>
     </div>
