@@ -4,12 +4,6 @@ import useFetch from "../hooks/useFetch";
 
 const Card = ({ forwardClick, project, backClick, isLoading }) => {
   const { name, desc, tags } = project;
-  // console.log(project);
-  // console.log(tags);
-  // const [details, setDetails] = useState(null);
-  const [count, setCount] = useState(0);
-  const { data } = useFetch("https://api-projectmanager.onrender.com");
-  // console.log(data);
   let display;
   if (isLoading) {
     display = (
@@ -26,6 +20,7 @@ const Card = ({ forwardClick, project, backClick, isLoading }) => {
       display = (
         <div>
           <h3 className="mt-3 ms-4">{name}</h3>
+          <p className="card--desc mt-0 ms-4 mb-1">{desc}</p>
           <span className="card--tags d-flex justify-content-start ms-4 mt-3">
             <p className="tag-name">tags:</p>
             {/* {tags.map((tag) => (

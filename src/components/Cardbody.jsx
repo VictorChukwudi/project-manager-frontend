@@ -4,8 +4,9 @@ import { useState } from "react";
 import useFetch from "../hooks/useFetch";
 
 const Cardbody = () => {
-  const { data, loading } = useFetch("http://localhost:5000/");
-  // const { data, loading } = useFetch("https://api-projectmanager.onrender.com");
+  // const { data, loading } = useFetch("http://localhost:5000/");
+  const { data, loading } = useFetch("https://api-projectmanager.onrender.com");
+  // console.log(data);
   const workingProjects = data.filter((proj) => proj.status === "working");
   const inProgressProjects = data.filter(
     (proj) => proj.status === "in-progress"
