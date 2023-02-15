@@ -4,144 +4,106 @@ import { useState } from "react";
 import useFetch from "../hooks/useFetch";
 
 const Cardbody = () => {
-  const { data } = useFetch("http://localhost:5000/");
+  const { data, loading } = useFetch("http://localhost:5000/");
+  // const { data, loading } = useFetch("https://api-projectmanager.onrender.com");
   const workingProjects = data.filter((proj) => proj.status === "working");
   const inProgressProjects = data.filter(
     (proj) => proj.status === "in-progress"
   );
   const completedProjects = data.filter((proj) => proj.status === "completed");
 
-  const [working, setWorking] = useState({
-    details: {},
-    count: 0,
-  });
-  const [inProgress, setInProgress] = useState({
-    details: {},
-    count: 0,
-  });
-  const [completed, setCompleted] = useState({
-    details: {},
-    count: 0,
-  });
+  //status states
+  const [working, setWorking] = useState({});
+  const [inProgress, setInProgress] = useState({});
+  const [completed, setCompleted] = useState({});
+
+  //status count
+  const [workingCount, setWorkingCount] = useState(0);
+  const [progressCount, setProgressCount] = useState(0);
+  const [completedCount, setCompletedCount] = useState(0);
+
+  //forward clicks for working, progress and completed statuses
   const clickWorking = () => {
-    if (working.count >= workingProjects.length - 1) {
-      setWorking((prev) => {
-        return {
-          details: {},
-          count: 0,
-        };
-      });
+    if (workingCount >= workingProjects.length - 1) {
+      setWorkingCount(0);
     } else {
-      setWorking((prev) => {
-        return {
-          details: {},
-          count: prev.count + 1,
-        };
-      });
+      setWorkingCount((prev) => prev + 1);
     }
-    setWorking((prev) => {
-      return {
-        details: workingProjects[prev.count],
-        count: prev.count,
-      };
-    });
-  };
-  const clickInProgress = () => {
-    if (inProgress.count >= inProgressProjects.length - 1) {
-      setInProgress((prev) => {
-        return {
-          details: {},
-          count: 0,
-        };
-      });
-    } else {
-      setInProgress((prev) => {
-        return {
-          details: {},
-          count: prev.count + 1,
-        };
-      });
-    }
-    setInProgress((prev) => {
-      return {
-        details: inProgressProjects[prev.count],
-        count: prev.count,
-      };
-    });
-  };
-  const clickCompleted = () => {
-    if (completed.count >= completedProjects.length - 1) {
-      setCompleted((prev) => {
-        return {
-          details: {},
-          count: 0,
-        };
-      });
-    } else {
-      setCompleted((prev) => {
-        return {
-          details: {},
-          count: prev.count + 1,
-        };
-      });
-    }
-    // setDetails(data[count]);
-    setCompleted((prev) => {
-      return {
-        details: completedProjects[prev.count],
-        count: prev.count,
-      };
-    });
+    setWorking(workingProjects[workingCount]);
   };
 
+  const clickInProgress = () => {
+    if (progressCount >= inProgressProjects.length - 1) {
+      setProgressCount(0);
+    } else {
+      setProgressCount((prev) => prev + 1);
+    }
+    setInProgress(inProgressProjects[progressCount]);
+  };
+
+  const clickCompleted = () => {
+    if (completedCount >= completedProjects.length - 1) {
+      setCompletedCount(0);
+    } else {
+      setCompletedCount((prev) => prev + 1);
+    }
+    setCompleted(completedProjects[completedCount]);
+  };
+
+  //Backward click for working, progress and completed statuses
   const clickWorkingBack = () => {
-    setWorking((prev) => {
-      return {
-        details: prev.details,
-        count: prev.count - 1,
-      };
-    });
+    if (workingCount <= 0) {
+      setWorkingCount(workingProjects.length - 1);
+    } else {
+      setWorkingCount((prev) => prev - 1);
+    }
+    setWorking(workingProjects[workingCount]);
   };
+
   const clickProgressBack = () => {
-    setInProgress((prev) => {
-      return {
-        details: prev.details,
-        count: prev.count - 1,
-      };
-    });
+    if (progressCount <= 0) {
+      setProgressCount(inProgressProjects.length - 1);
+    } else {
+      setProgressCount((prev) => prev - 1);
+    }
+    setInProgress(inProgressProjects[progressCount]);
   };
+
   const clickCompletedBack = () => {
-    setCompleted((prev) => {
-      return {
-        details: prev.details,
-        count: prev.count - 1,
-      };
-    });
+    if (completedCount <= 0) {
+      setCompletedCount(completedProjects.length - 1);
+    } else {
+      setCompletedCount((prev) => prev - 1);
+    }
+    setCompleted(completedProjects[completedCount]);
   };
   return (
-    <div className="testbody col-md-7 container-fluid">
-      <div className="testbody--details">
+    <div className="cardbody col-md-7 container-fluid">
+      <div className="cardbody--details">
         <h6>working...</h6>
         <Card
           forwardClick={clickWorking}
-          project={working.details}
+          project={working}
           backClick={clickWorkingBack}
+          isLoading={loading}
         />
       </div>
-      <div className="testbody--details">
+      <div className="cardbody--details">
         <h6>in-progress...</h6>
         <Card
           forwardClick={clickInProgress}
-          project={inProgress.details}
+          project={inProgress}
           backClick={clickProgressBack}
+          isLoading={loading}
         />
       </div>
-      <div className="testbody--details">
+      <div className="cardbody--details">
         <h6>completed...</h6>
         <Card
           forwardClick={clickCompleted}
-          project={completed.details}
+          project={completed}
           backClick={clickCompletedBack}
+          isLoading={loading}
         />
       </div>
     </div>

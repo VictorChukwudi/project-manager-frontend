@@ -71,21 +71,19 @@ body {
 .nav-item > a:hover {
   color: #060e10;
 }
-
 .cardbody {
   background-color: #c8d8e4;
-}
-.cardbody--status {
+  margin: 30px 6vw;
   text-transform: capitalize;
-  margin: 0 5px;
-  border-radius: 20px;
-  height: 30vh;
+  position: relative;
 }
-.cardbody--status > h6 {
-  font-family: "Itim", cursive;
-  margin-left: 15px;
-  color: #183a1d;
+.cardbody--details {
+  margin-top: 15px;
 }
+.cardbody--details > h6 {
+  font-weight: 600;
+}
+
 .card {
   height: 11.5vw;
   width: 40vw;
@@ -102,7 +100,7 @@ body {
   position: absolute;
   /* top: 120px; */
   display: flex;
-  gap: 5px;
+  gap: 7px;
   top: 120px;
   left: 480px;
   /* right: 210px; */
@@ -136,23 +134,18 @@ body {
   /* width: 5vw; */
   border-radius: 25px;
 }
+.arrow {
+  color: #09495b;
+  text-align: center;
+  width: 20px;
+}
 
-.arrow {
-  color: #09495b;
-  /* width: 25px; */
+.arrow:hover {
+  box-shadow: 2px 5px 5px;
+  border-radius: 50%;
 }
-.testbody {
-  background-color: #c8d8e4;
-  margin: 30px 6vw;
-  text-transform: capitalize;
-  position: relative;
-}
-.testbody--details {
-  margin-top: 15px;
-}
-.testbody--details > h6 {
-  font-weight: 600;
-}
-.arrow {
-  color: #09495b;
+
+.no-proj {
+  color: #060e10;
+  opacity: 0.75;
 }

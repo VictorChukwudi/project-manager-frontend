@@ -3,21 +3,28 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 const useFetch = (url) => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        const result = response.data.data;
-        setData(result);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setTimeout(() => {
+      axios
+        .get(url)
+        .then((response) => {
+          const result = response.data.data;
+          setData(result);
+
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setLoading(false);
+        });
+    }, 2000);
     // return () => {
     //   second;
     // };
   }, []);
-  return { data };
+  return { data, loading };
 };
 
 export default useFetch;
