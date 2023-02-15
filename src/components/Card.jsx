@@ -9,7 +9,7 @@ const Card = ({ forwardClick, project, backClick, isLoading }) => {
   // const [details, setDetails] = useState(null);
   const [count, setCount] = useState(0);
   const { data } = useFetch("https://api-projectmanager.onrender.com");
-  console.log(data);
+  // console.log(data);
   let display;
   if (isLoading) {
     display = (
