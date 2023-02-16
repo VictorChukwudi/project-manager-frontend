@@ -19,11 +19,11 @@ const useFetch = (url) => {
           console.log(error);
           setLoading(false);
         });
-    }, 2000);
+    }, 500);
     // return () => {
     //   second;
     // };
-  }, []);
+  }, url);
   return { data, loading };
 };
 

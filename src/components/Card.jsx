@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import useFetch from "../hooks/useFetch";
 
 const Card = ({ forwardClick, project, backClick, isLoading }) => {
   const { name, desc, tags } = project;
@@ -23,13 +22,13 @@ const Card = ({ forwardClick, project, backClick, isLoading }) => {
           <p className="card--desc mt-0 ms-4 mb-1">{desc}</p>
           <span className="card--tags d-flex justify-content-start ms-4 mt-3">
             <p className="tag-name">tags:</p>
-            {/* {tags.map((tag) => (
-          <p>{tag}</p>
-        ))} */}
-            <p>consectetur</p>
+            {tags.map((tag) => (
+              <p>{tag}</p>
+            ))}
+            {/* <p>consectetur</p>
             <p>augue</p>
             <p>ante</p>
-            <p>Mauris</p>
+            <p>Mauris</p> */}
           </span>
 
           <span className="card--span">

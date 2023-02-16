@@ -2,26 +2,43 @@ import React from "react";
 import Card from "./Card";
 import { useState } from "react";
 import useFetch from "../hooks/useFetch";
+import { useEffect } from "react";
 
 const Cardbody = () => {
   // const { data, loading } = useFetch("http://localhost:5000/");
   const { data, loading } = useFetch("https://api-projectmanager.onrender.com");
-  // console.log(data);
-  const workingProjects = data.filter((proj) => proj.status === "working");
-  const inProgressProjects = data.filter(
-    (proj) => proj.status === "in-progress"
-  );
-  const completedProjects = data.filter((proj) => proj.status === "completed");
 
   //status states
   const [working, setWorking] = useState({});
   const [inProgress, setInProgress] = useState({});
   const [completed, setCompleted] = useState({});
 
-  //status count
-  const [workingCount, setWorkingCount] = useState(0);
-  const [progressCount, setProgressCount] = useState(0);
-  const [completedCount, setCompletedCount] = useState(0);
+  let [workingCount, setWorkingCount] = useState(0);
+  let [progressCount, setProgressCount] = useState(0);
+  let [completedCount, setCompletedCount] = useState(0);
+
+  let [workingProjects, setWorkingProjects] = useState([]);
+  let [inProgressProjects, setInProgressProjects] = useState([]);
+  let [completedProjects, setCompletedProjects] = useState([]);
+
+  useEffect(() => {
+    if (!loading) {
+      setWorkingProjects(data.filter((proj) => proj.status === "working"));
+      setInProgressProjects(
+        data.filter((proj) => proj.status === "in-progress")
+      );
+      setCompletedProjects(data.filter((proj) => proj.status === "completed"));
+      if (workingProjects.length > 0) {
+        setWorking(workingProjects[0]);
+      }
+      if (inProgressProjects.length > 0) {
+        setInProgress(inProgressProjects[0]);
+      }
+      if (completedProjects.length > 0) {
+        setCompleted(completedProjects[0]);
+      }
+    }
+  }, [data]);
 
   //forward clicks for working, progress and completed statuses
   const clickWorking = () => {
