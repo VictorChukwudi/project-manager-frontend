@@ -22,11 +22,13 @@ const Cardbody = () => {
   let [completedProjects, setCompletedProjects] = useState([]);
 
   useEffect(() => {
-    if (!loading) {
+    console.log(data, "loading");
+    if (loading == false) {
       setWorkingProjects(data.filter((proj) => proj.status === "working"));
       setInProgressProjects(
         data.filter((proj) => proj.status === "in-progress")
       );
+      console.log("swac");
       setCompletedProjects(data.filter((proj) => proj.status === "completed"));
       if (workingProjects.length > 0) {
         setWorking(workingProjects[0]);
@@ -34,6 +36,7 @@ const Cardbody = () => {
       if (inProgressProjects.length > 0) {
         setInProgress(inProgressProjects[0]);
       }
+      console.log("hi was");
       if (completedProjects.length > 0) {
         setCompleted(completedProjects[0]);
       }
