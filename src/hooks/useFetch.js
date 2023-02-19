@@ -11,8 +11,9 @@ const useFetch = (url) => {
         .get(url)
         .then((response) => {
           const result = response.data.data;
-          setLoading(false);
           setData(result);
+
+          setLoading(false);
         })
         .catch((error) => {
           console.log(error);
@@ -22,7 +23,7 @@ const useFetch = (url) => {
     // return () => {
     //   second;
     // };
-  }, [url]);
+  }, url);
   return { data, loading };
 };
 
